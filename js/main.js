@@ -8,32 +8,31 @@ console.log('Anno di nascita: ' + birthYear);
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-console.log('Data di oggi: ' + currentYear);
+console.log('Anno in corso: ' + currentYear);
 
 let years = parseInt(currentYear - birthYear);
 console.log('Età: ' + years + ' anni');
 
-let price = parseInt(0.21 * route);
-// price.toFixed(2);
-console.log('Prezzo biglietto senza sconto: ' + price + ' €');
+let priceDemo = parseFloat(0.21 * route).toFixed(2);
+console.log('Prezzo biglietto senza sconto: ' + priceDemo + ' €');
 
 if (years < 18) {
-    price = price - ((20 / 100) * price);
+    price = new Intl.NumberFormat('it-IT', {style: 'currency', currency: 'EUR', minimumFractionDigits: 2}).format((0.21 * route) - ((20 / 100) * (0.21 * route)));
     alert(`
-    Il prezzo del biglietto YOUNG è: ${price} €
+    Il prezzo del biglietto YOUNG è: ${price}
     Buon viaggio!
     `);
 } else if (years >= 65) {
-    price = price - ((40 / 100) * price);
+    price = new Intl.NumberFormat('it-IT', {style: 'currency', currency: 'EUR', minimumFractionDigits: 2}).format((0.21 * route) - ((40 / 100) * (0.21 * route)));
     alert(`
-    Il prezzo del biglietto OVER65 è: ${price} €
+    Il prezzo del biglietto OVER65 è: ${price}
     Buon viaggio!
     `);
 }
 else {
-    price = price;
+    price = new Intl.NumberFormat('it-IT', {style: 'currency', currency: 'EUR', minimumFractionDigits: 2}).format(0.21 * route);
     alert(`
-    Il prezzo del biglietto è: ${price} €
+    Il prezzo del biglietto è: ${price}
     Buon viaggio!
     `);
 }
